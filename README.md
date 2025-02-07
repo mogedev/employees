@@ -143,11 +143,15 @@ This API provides a set of endpoints to manage employee data. It allows you to p
 
     ```json
     {
-      "id": 3,
-      "firstName": "Robert",
-      "lastName": "Jones",
-      "age": 40,
-      "position": "Senior Project Manager"
+        "id": 13,
+        "firstName": "Ana",
+        "secondName": "Sofi",
+        "firstLastName": "García",
+        "secondLastName": "Pérez",
+        "age": "32",
+        "gender": "FEMALE",
+        "birthDate": "10-05-1991",
+        "position": "Desarrolladora Web"
     }
     ```
 
