@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "41c54500-a4aa-4eb4-af8c-7c798e623876",
+		"name": "EmployeeCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5967646"
+	},
+	"item": [
+		{
+			"name": "Save employees",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"firstName\": \"Ana\",\n    \"secondName\": \"María\",\n    \"firstLastName\": \"García\",\n    \"secondLastName\": \"Pérez\",\n    \"age\": \"32\",\n    \"gender\": \"FEMALE\",\n    \"birthDate\": \"10-05-1991\",\n    \"position\": \"Desarrolladora Web\"\n  },\n  {\n    \"firstName\": \"Carlos\",\n    \"secondName\": null,\n    \"firstLastName\": \"López\",\n    \"secondLastName\": \"Rodríguez\",\n    \"age\": \"45\",\n    \"gender\": \"MALE\",\n    \"birthDate\": \"25-11-1978\",\n    \"position\": \"Gerente de Proyecto\"\n  },\n  {\n    \"firstName\": \"Sofía\",\n    \"secondName\": \"Isabel\",\n    \"firstLastName\": \"Martínez\",\n    \"secondLastName\": \"Sánchez\",\n    \"age\": \"28\",\n    \"gender\": \"FEMALE\",\n    \"birthDate\": \"08-02-1995\",\n    \"position\": \"Analista de Datos\"\n  },\n  {\n    \"firstName\": \"Juan\",\n    \"secondName\": \"Pablo\",\n    \"firstLastName\": \"González\",\n    \"secondLastName\": \"Fernández\",\n    \"age\": \"38\",\n    \"gender\": \"MALE\",\n    \"birthDate\": \"15-07-1985\",\n    \"position\": \"Ingeniero de Software\"\n  },\n  {\n    \"firstName\": \"Elena\",\n    \"secondName\": null,\n    \"firstLastName\": \"Díaz\",\n    \"secondLastName\": \"Ruiz\",\n    \"age\": \"25\",\n    \"gender\": \"FEMALE\",\n    \"birthDate\": \"22-09-1998\",\n    \"position\": \"Diseñadora Gráfica\"\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update employee",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Ana\",\n    \"secondName\": \"Sofi\",\n    \"firstLastName\": \"García\",\n    \"secondLastName\": \"Pérez\",\n    \"age\": \"32\",\n    \"gender\": \"FEMALE\",\n    \"birthDate\": \"1991-01-10\",\n    \"position\": \"Desarrolladora Web\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
