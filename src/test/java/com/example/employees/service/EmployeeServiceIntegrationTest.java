@@ -1,13 +1,12 @@
 package com.example.employees.service;
 
 import com.example.employees.dto.EmployeeDTO;
-import com.example.employees.enums.Gender;
+import com.example.employees.enums.GenderType;
 import com.example.employees.model.Employee;
 import com.example.employees.repository.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -45,8 +44,8 @@ public class EmployeeServiceIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        Employee employee = new Employee(1L,  "Maria", "Guadalupe", "Garcia", "Rodriguez", "23", Gender.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
-        Employee employeeUpdated = new Employee(1L,  "Maria", "Rosa", "Garcia", "Rodriguez", "23", Gender.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
+        Employee employee = new Employee(1L,  "Maria", "Guadalupe", "Garcia", "Rodriguez", 23, GenderType.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
+        Employee employeeUpdated = new Employee(1L,  "Maria", "Rosa", "Garcia", "Rodriguez", 23, GenderType.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
 
 
         Mockito.when(employeeRepository.findAll())
@@ -67,7 +66,7 @@ public class EmployeeServiceIntegrationTest {
 
     @Test
     public void whenUpdateEmployee_thenEmployeeShouldBeUpdated() {
-        EmployeeDTO employeeDTO = new EmployeeDTO(1L, "Maria", "Rosa", "Garcia", "Rodriguez", "23", Gender.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
+        EmployeeDTO employeeDTO = new EmployeeDTO(1L, "Maria", "Rosa", "Garcia", "Rodriguez", 23, GenderType.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
 
         EmployeeDTO updatedEmployee = employeeService.updateEmployee(1L, employeeDTO);
         assertThat(updatedEmployee.secondName()).isEqualTo("Rosa");

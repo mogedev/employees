@@ -66,8 +66,10 @@ public class EmployeeServiceImp implements EmployeeService {
      */
     public EmployeeDTO updateEmployee(Long id, EmployeeDTO employeeDTO) {
         employeeRepository.findById(id).orElseThrow(() -> new NotFoundException("Employee not found"));
-        Employee employeeSaved = employeeRepository.save(dtoToEmployeeModel(employeeDTO));
+        Employee employeeInfo = dtoToEmployeeModel(employeeDTO);
+        employeeInfo.setId(id);
+        Employee employeeUpdated = employeeRepository.save(employeeInfo);
         log.info("Employee updated successfully");
-        return modelToEmployeeDTO(employeeSaved);
+        return modelToEmployeeDTO(employeeUpdated);
     }
 }

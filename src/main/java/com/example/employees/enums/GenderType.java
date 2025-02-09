@@ -1,7 +1,6 @@
 package com.example.employees.enums;
 
-public enum Gender {
-
+public enum GenderType {
     MALE,
     FEMALE
 }

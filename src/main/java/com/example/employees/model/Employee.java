@@ -1,12 +1,10 @@
 package com.example.employees.model;
 
 import com.example.employees.dto.EmployeeDTO;
-import com.example.employees.enums.Gender;
+import com.example.employees.enums.GenderType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.ColumnTransformer;
 
 import java.time.LocalDate;
 
@@ -14,6 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
 @Entity(name = "employees")
 public class Employee {
 
@@ -24,11 +23,12 @@ public class Employee {
     private String secondName;
     private String firstLastName;
     private String secondLastName;
-    private String age;
+    private Integer age;
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @ColumnTransformer(write = "?::gender_type")
+    private GenderType gender;
     private LocalDate birthDate;
-    private String position;
+    private String job;
 
     public static EmployeeDTO modelToEmployeeDTO(Employee employee) {
          return new EmployeeDTO(
@@ -40,7 +40,7 @@ public class Employee {
                  employee.getAge(),
                  employee.getGender(),
                  employee.getBirthDate(),
-                 employee.getPosition()
+                 employee.getJob()
          );
     }
 }

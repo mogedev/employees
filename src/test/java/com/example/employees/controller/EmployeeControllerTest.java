@@ -1,10 +1,8 @@
 package com.example.employees.controller;
 
 import com.example.employees.dto.EmployeeDTO;
-import com.example.employees.enums.Gender;
+import com.example.employees.enums.GenderType;
 import com.example.employees.service.EmployeeServiceImp;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +35,9 @@ public class EmployeeControllerTest {
     @MockitoBean
     private EmployeeServiceImp service;
 
-    private static ObjectMapper objectMapper;
-
-    @BeforeAll
-    public static void setUp() {
-        objectMapper = new ObjectMapper();
-    }
-
     @Test
     public void givenEmployees_whenGetEmployees_thenReturnJsonArray() throws Exception {
-        EmployeeDTO employeeDTO = new EmployeeDTO(null, "Maria", "Guadalupe", "Garcia", "Rodriguez", "23", Gender.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
+        EmployeeDTO employeeDTO = new EmployeeDTO(null, "Maria", "Guadalupe", "Garcia", "Rodriguez", 23, GenderType.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
 
         List<EmployeeDTO> employees = List.of(employeeDTO);
 
@@ -61,8 +52,8 @@ public class EmployeeControllerTest {
 
     @Test
     public void givenEmployees_whenGetEmployees_thenReturnJsonArray2() throws Exception {
-        EmployeeDTO employeeDTO = new EmployeeDTO(null, "Maria", "Guadalupe", "Garcia", "Rodriguez", "23", Gender.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
-        EmployeeDTO employeeDTO1 = new EmployeeDTO(null, "Carlos", "", "Martinez", "Ramos", "28", Gender.FEMALE, LocalDate.parse("11-02-1980", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Accountant");
+        EmployeeDTO employeeDTO = new EmployeeDTO(null, "Maria", "Guadalupe", "Garcia", "Rodriguez", 23, GenderType.FEMALE, LocalDate.parse("10-09-1996", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Developer");
+        EmployeeDTO employeeDTO1 = new EmployeeDTO(null, "Carlos", "", "Martinez", "Ramos", 28, GenderType.FEMALE, LocalDate.parse("11-02-1980", DateTimeFormatter.ofPattern("dd-MM-yyyy")), "Accountant");
 
         List<EmployeeDTO> employees = List.of(employeeDTO, employeeDTO1);
 
@@ -86,7 +77,7 @@ public class EmployeeControllerTest {
                       "age": 38,
                       "gender": "MALE",
                       "birthDate": "15-07-1985",
-                      "position": "Ingeniero de Software"
+                      "job": "Ingeniero de Software"
                     }
                 ]
                 """;
@@ -110,7 +101,8 @@ public class EmployeeControllerTest {
                       "age": 38,
                       "gender": "MALE",
                       "birthDate": "1985-07-15",
-                      "position": "Ingeniero de Software"
+                      "job": "Ingeniero de Software"
+                      "job": "Ingeniero de Software"
                     }
                 ]
                 """;
